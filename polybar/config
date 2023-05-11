@@ -1,0 +1,99 @@
+[colors]
+background = #202f5c
+background-alt = #0f0f0f 
+foreground = #FFF
+primary = #FFFFFF
+secondary = #7FBBB3 
+alert = #A54242
+disabled = #707880
+red = #bb2d7a
+
+[bar/primary_monitor]
+width = 98%
+height = 30
+fixed-center = true
+offset-x = 1%
+offset-y = 1%
+radius = 10
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+module-margin = 1
+padding-left = 2
+padding-right = 2
+
+
+tray-position = right
+tray-padding = 10
+tray-offset-x = ${self.radius}
+tray-background = ${colors.backround}
+wm-restack = bspwm
+
+font-1 = JetBrainsMonoNL Nerd Font:size=10;2
+
+modules-left = bspwm 
+modules-center = 
+modules-right = date battery
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/battery]
+type = internal/battery
+full-at = 99 
+low-at = 10 
+poll-interval = 5
+batter = BAT0
+
+[module/title]
+type = internal/xwindow
+format = <label>
+format-foreground = ${colors.foreground} 
+format-padding = 4
+label = %title%
+label-maxlen = 50
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+inline-mode = false
+enable-click = false 
+enable-scroll = false 
+reverse-scroll = true
+fuzzy-match = true
+ws-icon-default = "○"
+format = <label-state> <label-mode>
+label-monitor = %name%
+label-dimmed-empty-foreground = #555555
+
+label-focused = "●" 
+label-focused-padding = 1
+label-focused-foreground = #ffffff 
+
+label-occupied = "●" 
+label-occupied-foreground = ${colors.red}
+label-occupied-padding = 1
+
+label-urgent = %icon%
+label-urget-padding = 1
+label-urgent-foreground =#b81f24 
+
+label-empty = %icon% 
+label-empty-padding = 1
+label-empty-foreground = ${colors.red}
+
+label-separator-padding = 0
+override-redirect = true
+
+[module/date]
+type = internal/date
+interval = 1
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+date = %a, %b %d %I:%M %p
+label-foreground = ${colors.foreground}
+
+[settings]
+screenchange-reload = true
+pseudo-transparency = true
